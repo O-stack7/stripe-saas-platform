@@ -81,7 +81,7 @@ stripe-saas-platform/
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/stripe-saas-platform
+git clone https://github.com/O-stack7/stripe-saas-platform
 cd stripe-saas-platform
 pip install stripe flask python-dotenv
 ```
