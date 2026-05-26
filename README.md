@@ -12,7 +12,7 @@ at a payments company. I built this project to demonstrate depth of
 understanding in payment infrastructure design, going beyond surface 
 level API knowledge to building something production-grade from scratch.
 
-Every architectural decision in this project was deliberate — each 
+Every architectural decision in this project was deliberate, each 
 choice has a reason and a tradeoff.
 
 ---
@@ -20,15 +20,15 @@ choice has a reason and a tradeoff.
 ## What This Platform Does
 
 This platform enables businesses (tenants) to onboard, receive payments 
-from their customers, and manage subscriptions — all powered by Stripe.
+from their customers, and manage subscriptions, all powered by Stripe.
 
 **As the platform owner you:**
 - Charge tenants a monthly subscription fee (Starter €29, Pro €79, Enterprise €199)
 - Take a 10% application fee on every payment processed through the platform
-- Never touch sensitive card data or KYC documents — Stripe handles both
+- Never touch sensitive card data or KYC documents, Stripe handles both
 
 **As a tenant you:**
-- Onboard via Stripe Connect Express — Stripe handles identity verification
+- Onboard via Stripe Connect Expressm, Stripe handles identity verification
 - Receive payments from your customers routed directly to your connected account
 - Manage your subscription plan with proration on upgrades
 
@@ -46,7 +46,7 @@ from their customers, and manage subscriptions — all powered by Stripe.
 |----------|--------|-----|
 | Connect account type | Express over Custom | Stripe handles KYC and compliance |
 | Payment flow | Destination charges | Single API call handles fee deduction and routing |
-| Database | SQLite | Right-sized for portfolio — PostgreSQL in production |
+| Database | SQLite | Right-sized for portfolio: PostgreSQL in production |
 | Update order | Stripe before database | Stripe is the source of truth |
 | Webhook architecture | Flask + signature verification + idempotency | Secure, reliable event processing |
 | Currency | EUR end-to-end | Eliminates FX conversion fees |
@@ -59,7 +59,7 @@ stripe-saas-platform/
 ├── .env                    # API keys and Price IDs (never committed)
 ├── database.py             # Database schema initialisation
 ├── setup_products.py       # Creates Stripe Product and pricing tiers
-├── setup_tenants.py        # Tenant onboarding — creates Stripe Customers
+├── setup_tenants.py        # Tenant onboarding; creates Stripe Customers
 ├── connect.py              # Stripe Connect Express account setup
 ├── payments.py             # Destination charge processing
 ├── subscriptions.py        # Subscription lifecycle management
@@ -123,12 +123,12 @@ python failure_handling.py
 
 ## What I Learned Building This
 
-The most valuable thing wasn't the code — it was the decisions. 
+The most valuable thing wasn't the code, it was the decisions. 
 Choosing Express over Custom accounts, destination charges over 
 separate charges and transfers, EUR-to-EUR architecture to eliminate 
 FX fees. Each decision has a reason and a tradeoff.
 
-I also hit real problems along the way — idempotency key expiry 
+I also hit real problems along the way, idempotency key expiry 
 causing duplicate Stripe objects across sessions, German KYC 
 verification requiring specific test tokens that took real 
 debugging to discover, currency mismatch between platform and 
